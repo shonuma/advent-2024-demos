@@ -19,11 +19,11 @@ settings.update(
     }
 )
 
-def greet(name, intensity):
-    output_ = generate_content(name)    
+def generate_content(name, intensity):
+    output_ = exec_curl(name)
     return output_
 
-def generate_content(prompt: str):
+def exec_curl(prompt: str):
     data = {
         "contents": [
             {
@@ -100,7 +100,7 @@ def _retreive_token():
 
 
 demo = gr.ChatInterface(
-    fn=greet,
+    fn=generate_content,
     type="messages",
      css="footer {visibility: hidden}"
 )
